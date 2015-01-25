@@ -49,6 +49,6 @@ tidy<-tbl_df(cbind(ya$V2,X)) %>% rename(c('ya$V2'='activity'))
 tidy_agg<-tbl_df(aggregate(tidy,by = list(tidy$subject,tidy$activity),FUN="mean")) %>% select(-c(activity,subject)) %>% rename(c('Group.1'='subject',c('Group.2'='activity')))
 # Export data
 write.csv(tidy,"tidy.csv")
-write.csv(tidy_agg,"TidyAggregatedBySourceAndActivity.csv")
+write.table(tidy_agg,"TidyAggregatedBySourceAndActivity.txt",row.name=FALSE)
 setwd("../")
 print("Work is DONE...")
